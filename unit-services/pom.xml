@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>ua.ishchenko</groupId>
-            <artifactId>units-common</artifactId>
+            <artifactId>unit-common</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
@@ -45,29 +45,29 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-artifacts</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>attach-artifact</goal>
-                        </goals>
-                        <configuration>
-                            <!--<artifacts>-->
-                                <!--<artifact>-->
-                                    <!--<file>etc/shapes.backend.cfg</file>-->
-                                    <!--<type>cfg</type>-->
-                                    <!--<classifier>shapes.backend</classifier>-->
-                                <!--</artifact>-->
-                                <!--<artifact>-->
-                                    <!--<file>etc/features.xml</file>-->
-                                    <!--<type>xml</type>-->
-                                    <!--<classifier>features</classifier>-->
-                                <!--</artifact>-->
-                            <!--</artifacts>-->
-                        </configuration>
-                    </execution>
-                </executions>
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>attach-artifacts</id>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>attach-artifact</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--&lt;!&ndash;<artifacts>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<artifact>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<file>etc/shapes.backend.cfg</file>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<type>cfg</type>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<classifier>shapes.backend</classifier>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</artifact>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<artifact>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<file>etc/features.xml</file>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<type>xml</type>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<classifier>features</classifier>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</artifact>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</artifacts>&ndash;&gt;-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
             </plugin>
 
         </plugins>

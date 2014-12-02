@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>ua.ishchenko</groupId>
-            <artifactId>unit-common</artifactId>
+            <artifactId>units-common</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>

@@ -1,4 +1,4 @@
-package ua.ishchenko.weapon;
+package ishchenko.ua.common.weapon;
 
 /**
  * Created by Yaroslav on 11/22/2014.

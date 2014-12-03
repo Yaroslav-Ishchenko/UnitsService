@@ -20,6 +20,14 @@
 		<cxf.version>3.0.1</cxf.version>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<defaultGoal>install</defaultGoal>
 

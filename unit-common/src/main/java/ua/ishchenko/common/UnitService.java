@@ -1,6 +1,6 @@
-package ishchenko.ua.common;
+package ua.ishchenko.common;
 
-import ishchenko.ua.common.unit.Unit;
+import ua.ishchenko.common.unit.Unit;
 
 import javax.ws.rs.*;
 import javax.xml.ws.Response;

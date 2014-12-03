@@ -1,4 +1,4 @@
-package ishchenko.ua.common.unit;
+package ua.ishchenko.common.unit;
 
 /**
  * Created by Yaroslav on 11/22/2014.

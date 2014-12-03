@@ -1,9 +1,8 @@
 package ua.ishchenko.services.core.units;
 
-import ua.ishchenko.unit.Unit;
-import ua.ishchenko.weapon.Weapon;
 
-import java.lang.Override;import java.lang.String;
+import ua.ishchenko.common.unit.Unit;
+import ua.ishchenko.common.weapon.Weapon;
 
 public class Grenader implements Unit {
     private String name;

@@ -9,17 +9,21 @@
     <version>1.0.0</version>
     <packaging>bundle</packaging>
 
-    <properties>
-        <cxf.ver>3.0.1</cxf.ver>
-    </properties>
+    <parent>
+        <groupId>ua.ishchenko</groupId>
+        <artifactId>units</artifactId>
+        <version>1.0.0</version>
+        <relativePath>..</relativePath>
+    </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-            <version>${cxf.ver}</version>
+            <version>${cxf.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

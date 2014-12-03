@@ -1,6 +1,7 @@
 package ua.ishchenko.services.core.weapons;
 
-import ua.ishchenko.weapon.Weapon;
+
+import ua.ishchenko.common.weapon.Weapon;
 
 /**
  * Created by Yaroslav on 11/22/2014.

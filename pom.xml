@@ -13,6 +13,7 @@
 	<modules>
 		<module>unit-common</module>
 		<module>unit-services</module>
+		<module>unit-feature</module>
 		<!--<module>features</module>-->
 	</modules>
 

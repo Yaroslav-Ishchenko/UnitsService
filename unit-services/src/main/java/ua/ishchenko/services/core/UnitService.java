@@ -1,13 +1,14 @@
-package ua.ishchenko.common;
+package ua.ishchenko.services.core;
 
+import ua.ishchenko.common.UnitServiceCommon;
 import ua.ishchenko.common.unit.Unit;
 
 import javax.ws.rs.*;
-import javax.xml.ws.Response;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/units/v1")
-public interface UnitService {
+@Path("/")
+public interface UnitService extends UnitServiceCommon{
 
     @POST
     @Path("/add/{unit}")

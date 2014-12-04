@@ -1,10 +1,9 @@
 package ua.ishchenko.services.core;
 
-
-import ua.ishchenko.common.UnitService;
 import ua.ishchenko.common.unit.Unit;
 
-import javax.xml.ws.Response;
+import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +20,9 @@ public class UnitServiceImpl implements UnitService {
 
     @Override
     public List getUnits() {
-        return null;
+        List <String> str = new ArrayList<String>();
+        str.add("adasd");
+        return str;
     }
 
     @Override

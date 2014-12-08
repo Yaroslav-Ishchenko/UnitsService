@@ -23,6 +23,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="unit-common" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:2.12.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.cxf:cxf-rt-frontend-jaxrs:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.cxf:cxf-core:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.woodstox:woodstox-core-asl:4.4.0" level="project" />

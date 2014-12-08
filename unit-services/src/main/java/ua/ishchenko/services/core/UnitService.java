@@ -1,11 +1,11 @@
 package ua.ishchenko.services.core;
 
 import ua.ishchenko.common.UnitServiceCommon;
+import ua.ishchenko.common.jaxb.converters.JaxbList;
 import ua.ishchenko.common.unit.Unit;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 @Path("/")
 public interface UnitService extends UnitServiceCommon{
@@ -17,7 +17,7 @@ public interface UnitService extends UnitServiceCommon{
 
     @GET
     @Produces("application/xml")
-    List getUnits();/*get the whole list of users*/
+    JaxbList getUnits();/*get the whole list of users*/
     @GET
     @Produces("application/xml")
     @Path("/{id}")

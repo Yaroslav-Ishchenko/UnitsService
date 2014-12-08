@@ -1,10 +1,11 @@
 package ua.ishchenko.services.core;
 
+import ua.ishchenko.common.jaxb.converters.JaxbList;
 import ua.ishchenko.common.unit.Unit;
+import ua.ishchenko.services.core.units.Grenader;
 
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Yaroslav on 11/26/2014.
@@ -19,10 +20,13 @@ public class UnitServiceImpl implements UnitService {
     }
 
     @Override
-    public List getUnits() {
-        List <String> str = new ArrayList<String>();
-        str.add("adasd");
-        return str;
+    public JaxbList getUnits() {
+
+        ArrayList <Unit> str = new ArrayList<Unit>();
+        Unit unit= new Grenader();
+        str.add(unit);
+        //return Response.ok(new GenericEntity<ArrayList<Unit>>(str) {}).build();
+        return new JaxbList(str);
     }
 
     @Override

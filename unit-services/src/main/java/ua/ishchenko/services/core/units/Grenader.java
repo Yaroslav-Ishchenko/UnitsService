@@ -4,12 +4,22 @@ package ua.ishchenko.services.core.units;
 import ua.ishchenko.common.unit.Unit;
 import ua.ishchenko.common.weapon.Weapon;
 
-public class Grenader implements Unit {
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import java.io.Serializable;
+
+@XmlRootElement
+@XmlSeeAlso(Grenader.class)
+public class Grenader implements Unit,Serializable {
+
+    @XmlElement
     private String name;
+    @XmlElement
     private Weapon weapon;
 
     public Grenader() {
-        name = "Unknown";
+        name = "Grenader";
     }
 
     public Grenader(String name) {
@@ -43,5 +53,13 @@ public class Grenader implements Unit {
     @Override
     public void hitAnEnemy() {
 
+    }
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

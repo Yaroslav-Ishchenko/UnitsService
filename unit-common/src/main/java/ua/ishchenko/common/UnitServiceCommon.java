@@ -9,9 +9,9 @@ import java.util.List;
 public interface UnitServiceCommon {
     Response addUnit(Unit unit);/*add single user*/
 
-    JaxbList getUnits();/*get the whole list of users*/
+    Response getUnits();/*get the whole list of users*/
 
-    Unit getUnit(String id);/*get the user*/
+    Response getUnit(String id);/*get the user*/
 
     Response updateUnit(Unit unit);/*if exists update the user if not just error*/
 

@@ -1,8 +1,8 @@
 package ua.ishchenko.services.core;
 
 import ua.ishchenko.common.UnitServiceCommon;
-import ua.ishchenko.common.jaxb.converters.JaxbList;
 import ua.ishchenko.common.unit.Unit;
+import ua.ishchenko.services.core.units.Grenadier;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -11,29 +11,30 @@ import javax.ws.rs.core.Response;
 public interface UnitService extends UnitServiceCommon{
 
     @POST
-    @Path("/add/{unit}")
-    @Produces("application/xml")
-    Response addUnit(@PathParam("unit")Unit unit);/*add single user*/
+    @Path("/add")
+    @Produces("application/json")
+    Response addUnit(@QueryParam("unit")Grenadier unit);/*add single user*/
 
     @GET
-    @Produces("application/xml")
-    JaxbList getUnits();/*get the whole list of users*/
+    @Produces("application/json")
+    Response getUnits();/*get the whole list of users*/
+
     @GET
-    @Produces("application/xml")
+    @Produces("application/json")
     @Path("/{id}")
-    Unit getUnit(@PathParam("id")String id);/*get the user*/
+    Response getUnit(@PathParam("id")String id);/*get the user*/
 
     @PUT
-    @Produces("application/xml")
-    @Path("/{unit}")
-    Response updateUnit(@PathParam("unit")Unit unit);/*if exists update the user if not just error*/
+    @Produces("application/json")
+    @Path("/{id}")
+    Response updateUnit(@PathParam("id") String id, @QueryParam("unit")Grenadier unit);/*if exists update the user if not just error*/
 
     @DELETE
-    @Produces("application/xml")
+    @Produces("application/json")
     Response deleteUnits();/*delete all units*/
 
     @DELETE
-    @Produces("application/xml")
+    @Produces("application/json")
     @Path("/{id}")
-    Response deleteUnit(@PathParam("id")String name);/*delete the user*/
+    Response deleteUnit(@PathParam("id")String id);/*delete the user*/
 }

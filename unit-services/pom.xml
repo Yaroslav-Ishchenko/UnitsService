@@ -10,13 +10,10 @@
         <relativePath>..</relativePath>
     </parent>
 
-
     <groupId>ua.ishchenko</groupId>
     <artifactId>unit-services</artifactId>
     <version>1.0.0</version>
     <packaging>bundle</packaging>
-
-
 
     <dependencies>
         <dependency>

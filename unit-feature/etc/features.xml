@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <features name="shapes-services-1.0.0">
-	  <feature name="unit" version="1.0.0" resolver="(obr)">
+	  <feature name="unit-service" version="1.0.0" resolver="(obr)">
+	    <feature>cxf-jaxrs</feature>
 	  	<bundle dependency="true">mvn:ua.ishchenko/unit-common/1.0.0</bundle>
 	  	<bundle dependency="true">mvn:ua.ishchenko/unit-services/1.0.0</bundle>
 	  </feature>

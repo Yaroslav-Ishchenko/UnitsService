@@ -62,10 +62,11 @@ public class UnitServiceImpl implements UnitService {
     }
 
     @Override
-    public Response updateUnit(String id, Grenadier unit) {
+    public Response updateUnit(Grenadier unit) {
         for(Grenadier gr: str){
-            if(gr.getName().equals(id)) {
-                gr = unit;
+            if(gr.getName().equals(unit.getName())) {
+                str.remove(gr);
+                str.add(unit);
                 return Response.ok().build();
             }
         }

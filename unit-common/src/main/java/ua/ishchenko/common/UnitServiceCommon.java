@@ -1,9 +1,10 @@
 package ua.ishchenko.common;
 
-import ua.ishchenko.common.jaxb.converters.JaxbList;
-import ua.ishchenko.common.unit.Unit;
 
 import javax.ws.rs.core.Response;
+
+import ua.ishchenko.common.unit.Unit;
+
 import java.util.List;
 
 public interface UnitServiceCommon {

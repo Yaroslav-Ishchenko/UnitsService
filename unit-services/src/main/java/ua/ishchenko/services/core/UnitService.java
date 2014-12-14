@@ -1,40 +1,56 @@
 package ua.ishchenko.services.core;
 
-import ua.ishchenko.common.UnitServiceCommon;
-import ua.ishchenko.common.unit.Unit;
-import ua.ishchenko.services.core.units.Grenadier;
-
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import ua.ishchenko.common.UnitServiceCommon;
+import ua.ishchenko.services.core.units.Grenadier;
 
 @Path("/")
 public interface UnitService extends UnitServiceCommon{
 
-    @POST
-    @Path("/add")
-    @Produces("application/json")
-    Response addUnit(@QueryParam("unit")Grenadier unit);/*add single user*/
+    /**
+     * Add single user
+     * @param unit
+     * @return
+     */
+    @PUT
+    @Path("items/")
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Consumes({ MediaType.APPLICATION_JSON })
+    Response addUnit(Grenadier unit);
 
     @GET
-    @Produces("application/json")
+    @Path("items/")
+    @Produces({ MediaType.APPLICATION_JSON })
     Response getUnits();/*get the whole list of users*/
 
     @GET
-    @Produces("application/json")
-    @Path("/{id}")
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Path("items/{id}/")
     Response getUnit(@PathParam("id")String id);/*get the user*/
 
-    @PUT
-    @Produces("application/json")
-    @Path("/{id}")
-    Response updateUnit(@PathParam("id") String id, @QueryParam("unit")Grenadier unit);/*if exists update the user if not just error*/
+    @POST
+    @Path("items/")
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Consumes({ MediaType.APPLICATION_JSON })
+    Response updateUnit(Grenadier unit);/*if exists update the user if not just error*/
 
     @DELETE
-    @Produces("application/json")
+    @Path("items/")
+    @Produces({ MediaType.APPLICATION_JSON })
     Response deleteUnits();/*delete all units*/
 
     @DELETE
-    @Produces("application/json")
-    @Path("/{id}")
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Path("items/{id}/")
     Response deleteUnit(@PathParam("id")String id);/*delete the user*/
 }

@@ -16,8 +16,30 @@ public class Scythe implements Weapon {
     String name;
     @XmlElement
     boolean sharp;
-    public Scythe(){
-        name="Lucida";
-        sharp=true;
+
+    public Scythe() {
+        name = "Lucida";
+        sharp = true;
     }
+
+    @Override
+    public boolean isSharp() {
+        return sharp;
+    }
+
+    @Override
+    public void setSharp(boolean sharp) {
+        this.sharp = sharp;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

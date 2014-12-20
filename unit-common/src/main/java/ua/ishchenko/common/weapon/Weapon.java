@@ -7,5 +7,12 @@ import java.io.Serializable;
  */
 public interface Weapon extends Serializable{
 
+    boolean isSharp();
+
+    void setSharp(boolean sharp);
+
+    String getName();
+
+    void setName(String name);
 }
 

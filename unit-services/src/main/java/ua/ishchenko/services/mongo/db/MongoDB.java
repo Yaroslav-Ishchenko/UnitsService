@@ -1,7 +1,6 @@
 package ua.ishchenko.services.mongo.db;
 
 import com.mongodb.DB;
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
 
@@ -15,43 +14,57 @@ public class MongoDB {
 
     private MongoClient mongo;
     private DB db;
-    private String HOST="localhost";
-    private int PORT= 27107;
-    private String DB_NAME="wariors";
-    private static String userName;
-    private static String password;
+    private static String HOST="localhost";
+    private static int PORT= 27017;
+    private static String DB_NAME="warriors";
+/*    private static String userName;
+    private static String password;*/
 
-    private MongoDB(String userName, String pass) {
+    private MongoDB() {
         try {
             mongo = new MongoClient(Arrays.asList(new ServerAddress(HOST, PORT)));
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        db = mongo.getDB("warriors");
+        db = mongo.getDB(DB_NAME);
 
     }
-    static class InnerInitializator
+    static class InnerInitializer {
+        private static MongoDB instance = new MongoDB();
+    }
+    public static MongoDB getMongoDBInstance(String dbName){
+        if(dbName!=null&& !dbName.isEmpty())
+        {
+            DB_NAME = dbName;
+        }
+        return InnerInitializer.instance;
+    }
+
+    public String getDB_NAME() {
+        return DB_NAME;
+    }
+
+    public void setDB_NAME(String DB_NAME) {
+        this.DB_NAME = DB_NAME;
+    }
+
+    public DB getDb() {
+        return db;
+    }
+
+/*    public void setDb(DB db) {
+        this.db = db;
+    }
+
+    public MongoClient getMongoClient() {
+        return mongo;
+    }
+
+    public void setMongo(MongoClient mongo) {
+        this.mongo = mongo;
+    }*/
+    public void cleanUpMongoClient()
     {
-        static MongoDB instance = new MongoDB(userName, password);
-    }
-    public MongoDB getMongoDBInstance()
-    {
-        return InnerInitializator.instance;
-    }
-
-    public static String getUserName() {
-        return userName;
-    }
-
-    public static void setUserName(String userName) {
-        MongoDB.userName = userName;
-    }
-
-    public static String getPassword() {
-        return password;
-    }
-
-    public static void setPassword(String password) {
-        MongoDB.password = password;
+        mongo.close();
     }
 }

@@ -16,7 +16,7 @@ public class Grenadier implements Unit{
 
     @XmlElement
     public String name;
-    @XmlElement(name = "weap")
+    @XmlElement(name = "weapon")
     public Scythe weapon;
 
     public Grenadier() {
@@ -55,13 +55,26 @@ public class Grenadier implements Unit{
     public void hitAnEnemy() {
 
     }
+    @Override
     public String getName()
     {
         return name;
     }
-
+    @Override
     public void setName(String name) {
         this.name = name;
+    }
+    @Override
+    public Weapon getWeapon()
+    {
+        return weapon;
+    }
+    @Override
+    public void setWeapon(Weapon weapon) {
+        if(weapon instanceof Scythe)
+            this.weapon = (Scythe)weapon;
+        else
+            throw new RuntimeException("setWeapon() method Supports only Grenadier type");
     }
     @Override
     public boolean equals(Object a)

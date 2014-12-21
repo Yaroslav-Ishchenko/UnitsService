@@ -42,8 +42,9 @@ public class MongoOperational {
         while (cursorDoc.hasNext()) {
             DBObject obj = cursorDoc.next();
             System.out.println(obj);
-            *//*collection.remove(obj);*//*
         }
+            *//*collection.remove(obj);*//*
+
 
     }*/
 
@@ -91,8 +92,9 @@ public class MongoOperational {
         unit.setUnitId((long) dbo.get("unitId"));
         unit.setName((String) dbo.get("unitname"));
 
-        wep.setName((String) dbo.get("weaponname"));
-        wep.setSharp((boolean) dbo.get("weaponsharpness"));
+        DBObject weapon = (DBObject)dbo.get("weapon");
+        wep.setName((String) weapon.get("weaponname"));
+        wep.setSharp((boolean) weapon.get("weaponsharpness"));
         unit.setWeapon(wep);
         return unit;
     }

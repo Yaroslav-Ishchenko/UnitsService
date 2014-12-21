@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import ua.ishchenko.common.UnitServiceCommon;
+import ua.ishchenko.common.unit.Unit;
 import ua.ishchenko.services.core.units.Grenadier;
 
 @Path("/")
@@ -26,7 +27,7 @@ public interface UnitService extends UnitServiceCommon{
     @Path("items/")
     @Produces({ MediaType.APPLICATION_JSON })
     @Consumes({ MediaType.APPLICATION_JSON })
-    Response addUnit(Grenadier unit);
+    Response addUnit(Unit unit);
 
     @GET
     @Path("items/")
@@ -42,7 +43,7 @@ public interface UnitService extends UnitServiceCommon{
     @Path("items/")
     @Produces({ MediaType.APPLICATION_JSON })
     @Consumes({ MediaType.APPLICATION_JSON })
-    Response updateUnit(Grenadier unit);/*if exists update the user if not just error*/
+    Response updateUnit(Unit unit);/*if exists update the user if not just error*/
 
     @DELETE
     @Path("items/")

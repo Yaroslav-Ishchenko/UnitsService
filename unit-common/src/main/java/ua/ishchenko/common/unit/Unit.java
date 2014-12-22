@@ -2,22 +2,20 @@ package ua.ishchenko.common.unit;
 
 import ua.ishchenko.common.weapon.Weapon;
 
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 
 /**
  * Created by Yaroslav on 11/22/2014.
  */
-public abstract class Unit implements Serializable{
-    private static long uniqueId;
-    static{
-        uniqueId = 1;
-    }
-    public static void setUniqueIdCounter(long uniqueId)
-    {
-        Unit.uniqueId = uniqueId;
-    }
-    public static long getUniqueId() {
-        return Unit.uniqueId++;
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso(Unit.class)
+public abstract class Unit implements Serializable {
+    protected static long uniqueIDCounter;
+
+    static {
+        uniqueIDCounter = 1;
     }
 
     public abstract void atack();
@@ -32,11 +30,17 @@ public abstract class Unit implements Serializable{
 
     public abstract void setName(String name);
 
+    public abstract void setWeapon(Weapon weapon);
+
     public abstract Weapon getWeapon();
 
-    public abstract void setWeapon(Weapon weapon);
+    public abstract void setUnitId(long id);
 
     public abstract long getUnitId();
 
-    public abstract void setUnitId(long unitId);
+    public long getUniqueID() {
+        return uniqueIDCounter++;
+    }
+
+
 }

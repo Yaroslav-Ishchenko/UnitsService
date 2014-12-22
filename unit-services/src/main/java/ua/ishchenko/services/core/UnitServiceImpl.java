@@ -1,9 +1,11 @@
 package ua.ishchenko.services.core;
 
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import ua.ishchenko.common.unit.Unit;
 import ua.ishchenko.services.core.units.Grenadier;
 import ua.ishchenko.services.core.weapons.Scythe;
+import ua.ishchenko.services.mongo.db.MongoDB;
 import ua.ishchenko.services.mongo.db.MongoOperational;
 
 import javax.ws.rs.core.GenericEntity;
@@ -19,67 +21,63 @@ import java.util.List;
 public class UnitServiceImpl implements UnitService {
 
     List<Unit> unitList;
-    MongoOperational mongo;
-    DBCollection collection;
-
-    public UnitServiceImpl() {
-       mongo = new MongoOperational();
-        collection = mongo.getMongoDb().getDb().getCollection("Units");
-
-        unitList = new ArrayList<Unit>();
-     /*   unitList.add(new Grenadier());
-        unitList.add(new Grenadier("Vasya", new Scythe()));
-        unitList.add(new Grenadier("Lancelot", new Scythe()));
-        unitList.add(new Grenadier("Artur", new Scythe()));
-        mongo.removeAll(collection);*/
-        unitList = mongo.toUnitList(collection.find());
-        //collection = mongo.fromUnitList(unitList, collection);
+    MongoOperational mongoOperational;
+    MongoDB db;
+   public UnitServiceImpl(MongoDB db){
+       this.db = db;
+       mongoOperational = new MongoOperational();
+       DBCollection collection = db.getDb().getCollection("Units");
+       unitList = new ArrayList<Unit>();
+        collection = mongoOperational.fromUnitList(unitList, collection);
+         DBCursor dbCur = collection.find();
+       unitList = mongoOperational.toUnitList(dbCur);
     }
-
     @Override
     public Response addUnit(Unit unit) {
-        Grenadier grn = null;
-        if (unit instanceof Grenadier)
-            grn = (Grenadier) unit;
-
+        return null;
+    }
+    @Override
+    public Response updateUnit(Unit unit) {
+        return null;
+    }
+    @Override
+    public Response addUnit(Grenadier unit) {
         try {
             unitList.add(unit);
-        } catch (Exception ex) {
+        }catch (Exception ex){
             return Response.notModified(ex.getMessage()).build();
         }
-        return Response.ok(new GenericEntity<Grenadier>(grn) {
-        }).build();
+        return Response.ok(new GenericEntity<Grenadier>(unit) {}).build();
     }
 
     @Override
     public Response getUnits() {
-
-        List<Grenadier> list = new ArrayList<>();
-        for (Unit unit : unitList) {
-            if (unit instanceof Grenadier)
-                list.add((Grenadier) unit);
+        ArrayList<Grenadier> list = new ArrayList<Grenadier>();
+        for(Unit unit : unitList)
+        {
+            if(unit instanceof Grenadier)
+            {
+                list.add((Grenadier)unit);
+            }
         }
-        return Response.ok(new GenericEntity<List<Grenadier>>(list) {
-        }).build();
+
+        return Response.ok(new GenericEntity<ArrayList<Grenadier>>(list) {}).build();
     }
 
     @Override
     public Response getUnit(String id) {
         Grenadier tmp = null;
-        for (Unit gr : unitList) {
-            if (gr.getName().equals(id) && gr instanceof Grenadier) {
-                tmp = (Grenadier)gr;
-            }
+        for(Unit gr: unitList){
+            if(gr instanceof Grenadier && ((Grenadier)gr).getName().equals(id))
+                tmp= (Grenadier)gr;
         }
-        return Response.ok(new GenericEntity<Grenadier>(tmp) {
-        }).build();
+        return Response.ok(new GenericEntity<Grenadier>(tmp) {}).build();
     }
 
     @Override
-    public Response updateUnit(Unit unit) {
-
-        for (Unit gr : unitList) {
-            if (gr.getName().equals(unit.getName())) {
+    public Response updateUnit(Grenadier unit) {
+        for(Unit gr: unitList){
+            if(gr instanceof Grenadier && ((Grenadier)gr).getName().equals(unit.getName())) {
                 unitList.remove(gr);
                 unitList.add(unit);
                 return Response.ok().build();
@@ -91,7 +89,7 @@ public class UnitServiceImpl implements UnitService {
     @Override
     public Response deleteUnits() {
         unitList.clear();
-        if (unitList.size() == 0)
+        if(unitList.size()==0)
             return Response.ok(new GenericEntity<String>("All are deleted") {
             }).build();
         else
@@ -100,8 +98,9 @@ public class UnitServiceImpl implements UnitService {
 
     @Override
     public Response deleteUnit(String id) {
-        for (Unit gr : unitList) {
-            if (gr.getName().equals(id)) {
+        for(Unit gr: unitList){
+            if(gr instanceof Grenadier && ((Grenadier)gr).getName().equals(id))
+            {
                 unitList.remove(gr);
                 return Response.ok(new GenericEntity<String>("deleted") {
                 }).build();

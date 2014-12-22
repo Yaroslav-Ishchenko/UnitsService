@@ -15,16 +15,15 @@ import java.util.Set;
  * Created by Jaros on 12/20/2014.
  */
 public class MongoOperational {
-    MongoDB mongoDb;
 
    public MongoOperational() {
-        mongoDb = MongoDB.getMongoDBInstance("warriors");
+                //MongoDB.getMongoDBInstance("warriors");
         // Set<String> set = db.getDb().getCollectionNames();
         //  db.getDb().getMongo().getDatabaseNames();
 //        System.out.println(db.getDb().);
     }
 
-    /*public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         List<Unit> units = new LinkedList<Unit>();
         Scythe wep = new Scythe();
         wep.setName("Izolda");
@@ -33,19 +32,18 @@ public class MongoOperational {
         units.add(new Grenadier("Bolek", wep));
 
         MongoOperational mongo = new MongoOperational();
-        DBCollection collection = mongo.mongoDb.getDb().getCollection("Units");
-        mongo.removeAll(collection);
-        collection = mongo.fromUnitList(units, collection);
-        *//*mongo.remove(collection);*//*
+        MongoDB mongoDB = new MongoDB("warriors");
+        DBCollection collection = mongoDB.getDb().getCollection("Units");
+        //mongo.removeAll(collection);
+        //collection = mongo.fromUnitList(units, collection);
+       // mongo.remove(collection);
         DBCursor cursorDoc = collection.find();
         System.out.println("before update");
         while (cursorDoc.hasNext()) {
             DBObject obj = cursorDoc.next();
             System.out.println(obj);
         }
-            *//*collection.remove(obj);*//*
-
-
+           // collection.remove(obj);
     }*/
 
     public void removeAll(DBCollection collection) {
@@ -55,13 +53,13 @@ public class MongoOperational {
 
     public void removeUnit(Unit unit, DBCollection collection) {
         DBObject document = new BasicDBObject();
-        document.put("unitId", unit.getUnitId());
+        document.put("unitId", unit.getUniqueID());
         WriteResult result = collection.remove(document);
-        System.out.println("Number of documents are deleted : " + result.getN());//shouldn't reach more than 1 because the ID must be unique
+        //System.out.println("Number of documents are deleted : " + result.getN());//shouldn't reach more than 1 because the ID must be unique
     }
 
     public void updateUnit(Unit unit, DBCollection collection) {
-        DBObject query = new BasicDBObject().append("unitId", unit.getUnitId());
+        DBObject query = new BasicDBObject().append("unitId", unit.getUniqueID());
         DBObject dbObj = fromUnit(unit);
         collection.update(query, dbObj);
     }
@@ -89,7 +87,7 @@ public class MongoOperational {
     public Unit toUnit(DBObject dbo) {
         Unit unit = new Grenadier();
         Weapon wep = new Scythe();
-        unit.setUnitId((long) dbo.get("unitId"));
+       unit.setUnitId((long) dbo.get("unitId"));
         unit.setName((String) dbo.get("unitname"));
 
         DBObject weapon = (DBObject)dbo.get("weapon");
@@ -107,14 +105,4 @@ public class MongoOperational {
         }
         return answer;
     }
-
-    public MongoDB getMongoDb() {
-        return mongoDb;
-    }
-
-    public void setMongoDb(MongoDB db) {
-        this.mongoDb = db;
-    }
-
-
 }

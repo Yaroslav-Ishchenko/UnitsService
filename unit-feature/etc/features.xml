@@ -2,8 +2,10 @@
 <features name="shapes-services-1.0.0">
 	  <feature name="unit-service" version="1.0.0" resolver="(obr)">
 	    <feature>cxf-jaxrs</feature>
+		  <configfile finalname="/etc/mongodb.cfg">mvn:ua.ishchenko/unit-services/1.0.0/cfg/mongodb</configfile>
+		  <bundle dependency="true">mvn:org.mongodb/mongo-java-driver/2.12.4</bundle>
 	  	<bundle dependency="true">mvn:ua.ishchenko/unit-common/1.0.0</bundle>
 	  	<bundle dependency="true">mvn:ua.ishchenko/unit-services/1.0.0</bundle>
-		  <bundle dependency="true">mvn:org.mongodb/mongo-java-driver/2.12.4</bundle>
+
 	  </feature>
 </features>

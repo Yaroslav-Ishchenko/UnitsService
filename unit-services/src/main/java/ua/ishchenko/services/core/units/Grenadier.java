@@ -6,17 +6,19 @@ import ua.ishchenko.common.weapon.Weapon;
 import ua.ishchenko.services.core.weapons.Scythe;
 
 import javax.xml.bind.annotation.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso(Grenadier.class)
 public class Grenadier extends Unit {
 
-    @XmlElement
-    private long unitId;
+    @XmlElement(name = "warriorUniqueId")
+    public long id;
     @XmlElement
     public String name;
-    @XmlElement(name = "weapon")
+    @XmlElement(name = "weap")
     public Scythe weapon;
 
 
@@ -25,8 +27,7 @@ public class Grenadier extends Unit {
     }
 
     public Grenadier(String name) {
-        this(name, null);
-
+        this(name, new Scythe());
     }
 
     /*public Grenadier(Weapon weapon) {
@@ -34,9 +35,9 @@ public class Grenadier extends Unit {
     }
 */
     public Grenadier(String name, Scythe weapon) {
-        unitId = Unit.getUniqueId();
         this.name = name;
-        this.weapon = weapon == null ? new Scythe() : weapon;
+        this.weapon = weapon;
+        id = getUniqueID();
     }
 
     @Override
@@ -70,31 +71,27 @@ public class Grenadier extends Unit {
     }
 
     @Override
+    public void setWeapon(Weapon weapon) {
+        if(weapon instanceof  Scythe)
+        this.weapon = (Scythe)weapon;
+    }
+
+    @Override
     public Weapon getWeapon() {
         return weapon;
     }
 
     @Override
-    public void setWeapon(Weapon weapon) {
-        if (weapon instanceof Scythe)
-            this.weapon = (Scythe) weapon;
-        else
-            throw new RuntimeException("setWeapon() method Supports only Scythe type");
+    public void setUnitId(long id) {
+        this.id = id;
     }
-
+    @Override
+    public long getUnitId() {
+        return this.id;
+    }
     @Override
     public boolean equals(Object a) {
         return (a instanceof Grenadier ? name.equals(((Grenadier) a).getName()) : false);
 
-    }
-
-    @Override
-    public long getUnitId() {
-        return unitId;
-    }
-
-    @Override
-    public void setUnitId(long unitId) {
-        this.unitId = unitId;
     }
 }

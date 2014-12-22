@@ -5,7 +5,7 @@
       <configuration manifestGenerationMode="OsmorcControlled" manifestLocation="" jarfileLocation="unit-services-1.0.0.jar" outputPathType="CompilerOutputPath" bndFileLocation="" bundlorFileLocation="" bundleActivator="" bundleSymbolicName="ua.ishchenko.unit-services" bundleVersion="1.0.0" ignoreFilePattern="" useProjectDefaultManifestFileLocation="true" alwaysRebuildBundleJAR="false" doNotSynchronizeWithMaven="false">
         <additionalProperties>
           <property key="Bundle-Name" value="${project.name}" />
-          <property key="Include-Resource" value="OSGI-INF/blueprint/blueprint.xml=$MODULE_DIR$/src/main/resources/OSGI-INF/blueprint/blueprint.xml" />
+          <property key="Include-Resource" value="mongo.properties=$MODULE_DIR$/src/main/resources/mongo.properties,OSGI-INF/blueprint/unit-ctx.xml=$MODULE_DIR$/src/main/resources/OSGI-INF/blueprint/unit-ctx.xml" />
         </additionalProperties>
         <additionalJARContents />
       </configuration>
